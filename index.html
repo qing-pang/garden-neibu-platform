@@ -260,7 +260,7 @@ details.access a{color:#1f6feb;font-weight:600;}
     <p style="background:#e8f5e9;border:1px solid #a5d6a7;padding:10px 12px;border-radius:8px;margin:0 0 6px;">
       <b>🌐 公网链接（任何网络 / 手机 / 回家都能开）</b><br>
       直接把下面的链接发给同事即可，无需装任何软件、无论在哪都能打开：<br>
-      <code id="pubLink" style="font-size:13px;word-break:break-all;">https://328e23709ad54aa8ac9435ce5a557955.app.workbuddy.link</code>
+      <code id="pubLink" style="font-size:13px;word-break:break-all;">https://qing-pang.github.io/garden-neibu-platform/</code>
       <button type="button" style="margin-left:6px;cursor:pointer;" onclick="copyText('pubLink')">复制</button>
     </p>
     <p style="color:#777;font-size:12px;margin:0 0 6px;">每次在办公室发布新周报，公网会自动同步更新，同事刷新即可看到最新一期。</p>
@@ -276,7 +276,7 @@ function copyText(id){
 (function(){
   try{
     var el=document.getElementById('pubLink');
-    if(el){ el.textContent = window.location.origin + '/'; }
+    if(el){ el.textContent = new URL('.', location.href).href; }
   }catch(e){}
 })();
 </script>
