@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>园林分院内务管理平台 · 考勤及补助</title>
+<style>
+  :root{--brand:#1f6feb;--brand2:#0e9566;--ink:#1f2733;--sub:#6b7785;--line:#e6eaf0;--card:#fff;--soft:#f3f6fb;--bad:#e5484d;--good:#0e9566;--bg:#eef1f6;}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,"Microsoft YaHei",Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);font-size:14px}
+  /* ===== 登录门（与周例会平台一致） ===== */
+  #loginGate{position:fixed;inset:0;z-index:9999;background:linear-gradient(120deg,#1f6feb,#0e9566);display:flex;align-items:center;justify-content:center;margin:0}
+  body.authed #loginGate{display:none!important}
+  body:not(.authed) .kq-app{display:none!important}
+  .login-box{background:#fff;border-radius:16px;padding:30px 34px;width:340px;max-width:90vw;box-shadow:0 12px 40px rgba(0,0,0,.25);text-align:center}
+  .login-logo{font-size:20px;font-weight:800;color:var(--brand);margin-bottom:4px}
+  .login-sub{font-size:12.5px;color:var(--sub);margin-bottom:18px}
+  #loginForm input{width:100%;border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-size:14px;margin-bottom:10px;font-family:inherit}
+  #loginForm input:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(31,111,235,.12)}
+  .login-err{color:var(--bad);font-size:12.5px;min-height:16px;margin-bottom:6px}
+  .login-btn{width:100%;background:var(--brand);color:#fff;border:none;border-radius:9px;padding:11px;font-size:15px;font-weight:700;cursor:pointer}
+  .login-btn:hover{filter:brightness(1.05)}
+  .login-foot{margin-top:14px;font-size:11.5px;color:#9aa6b2;line-height:1.7}
+  /* ===== 布局 ===== */
+  .kq-app{}
+  header.top{display:flex;align-items:center;justify-content:space-between;gap:14px;background:linear-gradient(120deg,#1f6feb,#0e9566);color:#fff;padding:14px 22px;flex-wrap:wrap}
+  header.top h1{margin:0;font-size:19px}
+  header.top .tip{font-size:12px;opacity:.92}
+  .usr-chip{display:inline-block;background:rgba(255,255,255,.18);padding:3px 10px;border-radius:20px;font-size:12px;margin-right:8px}
+  .modbar{display:flex;gap:6px;background:var(--card);padding:8px 18px;border-bottom:1px solid var(--line)}
+  .modbar button{border:none;background:transparent;color:var(--sub);padding:9px 18px;border-radius:8px;font-size:14px;cursor:pointer;font-family:inherit;font-weight:600}
+  .modbar button.on{background:var(--brand);color:#fff}
+  .modbar button:hover:not(.on){background:var(--soft)}
+  .kq-main{max-width:1180px;margin:0 auto;padding:18px}
+  .toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:16px}
+  .toolbar label{display:block;font-size:12px;color:var(--sub);margin-bottom:4px}
+  .toolbar select,.toolbar input[type=text]{border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:13px;font-family:inherit;background:#fff}
+  .toolbar .grow{flex:1;min-width:180px}
+  .btn{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:8px;padding:8px 14px;font-size:13px;cursor:pointer;font-family:inherit}
+  .btn.primary{background:var(--brand);color:#fff;border-color:var(--brand)}
+  .btn.green{background:var(--brand2);color:#fff;border-color:var(--brand2)}
+  .btn.sm{padding:6px 10px;font-size:12px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:16px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+  .stat .k{font-size:12px;color:var(--sub)}
+  .stat .v{font-size:22px;font-weight:800;margin-top:4px}
+  .stat .v.s{color:var(--brand2)} .stat .v.b{color:var(--brand)} .stat .v.r{color:var(--bad)}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:16px}
+  .panel h2{margin:0 0 12px;font-size:16px}
+  .panel h2 .sub{font-size:12px;color:var(--sub);font-weight:400;margin-left:8px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:center;white-space:nowrap}
+  th{background:var(--soft);color:var(--sub);font-weight:700;position:sticky;top:0}
+  td.name,th.name{text-align:left}
+  tr:hover td{background:#fafcff}
+  .tag{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11px;font-weight:700}
+  .tag.ok{background:#e8f5e9;color:var(--good)} .tag.warn{background:#fff3e0;color:#e08600}
+  .tag.bad{background:#fdecea;color:var(--bad)} .tag.sus{background:#eceff1;color:#607d8b}
+  .rank-row{display:flex;align-items:center;gap:10px;padding:7px 4px;border-bottom:1px solid var(--line)}
+  .rank-no{width:26px;height:26px;border-radius:50%;background:var(--soft);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;flex:none}
+  .rank-no.top{background:var(--brand);color:#fff}
+  .rank-bar{flex:1;height:10px;background:var(--soft);border-radius:6px;overflow:hidden}
+  .rank-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--brand),var(--brand2))}
+  .rank-val{font-weight:700;width:84px;text-align:right}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:780px){.grid2{grid-template-columns:1fr}}
+  .note{font-size:12px;color:var(--sub);line-height:1.8}
+  .pill{display:inline-block;background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:2px 10px;font-size:12px;color:var(--sub);margin:2px 4px 2px 0}
+  .modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;z-index:10000}
+  .modal.show{display:flex}
+  .modal .box{background:#fff;border-radius:14px;padding:22px;width:640px;max-width:94vw;max-height:88vh;overflow:auto}
+  .modal h3{margin:0 0 8px}
+  .modal textarea{width:100%;height:150px;border:1px solid var(--line);border-radius:8px;padding:10px;font-family:Consolas,Menlo,monospace;font-size:12px}
+  .modal .mtip{font-size:12px;color:var(--sub);margin:8px 0}
+  .closex{float:right;cursor:pointer;color:var(--sub);font-size:20px}
+  .kv{font-size:12px;color:var(--sub)}
+  .empty{padding:24px;text-align:center;color:var(--sub)}
+</style>
+</head>
+<body>
+<div id="loginGate">
+  <div class="login-box">
+    <div class="login-logo">🌿 园林分院内务管理平台</div>
+    <div class="login-sub">请登录后查看 · 仅授权人员可访问</div>
+    <form id="loginForm" autocomplete="off" onsubmit="return YLLogin(event)">
+      <input id="loginUser" type="text" placeholder="账号（姓名全拼，如 zhangqinglin）" autocomplete="off">
+      <input id="loginPass" type="password" placeholder="密码" autocomplete="off">
+      <div id="loginErr" class="login-err"></div>
+      <button type="submit" class="login-btn">登 录</button>
+    </form>
+    <div class="login-foot">授权人员（10 人）：汤铭、叶菁超、杨兰菊、江发林、陈昊、李杰、陈丹丹、张青琳、吴赛霞、叶兆华</div>
+  </div>
+</div>
+<script>
+(function(){
+  var ACCOUNTS={"tangming":"123456","yejingchao":"123456","yanglanju":"123456","jiangfalin":"123456","chenhao":"123456","lijie":"123456","chendandan":"123456","zhangqinglin":"123456","wusaixia":"123456","yezhaohua":"123456"};
+  var NAMES={"tangming":"汤铭","yejingchao":"叶菁超","yanglanju":"杨兰菊","jiangfalin":"江发林","chenhao":"陈昊","lijie":"李杰","chendandan":"陈丹丹","zhangqinglin":"张青琳","wusaixia":"吴赛霞","yezhaohua":"叶兆华"};
+  var KEY="yl_access_ok",UKEY="yl_user";
+  function refreshUser(){var chip=document.getElementById("usrChip");if(!chip)return;
+    if(sessionStorage.getItem(KEY)==="1"){var u=sessionStorage.getItem(UKEY);chip.style.display="";chip.textContent="\u{1F464} "+(NAMES[u]||u);var lb=document.getElementById("logoutBtn");if(lb)lb.style.display="";}
+    else{chip.style.display="none";var lb2=document.getElementById("logoutBtn");if(lb2)lb2.style.display="none";}}
+  function setAuthed(u){sessionStorage.setItem(KEY,"1");sessionStorage.setItem(UKEY,u);document.body.classList.add("authed");refreshUser();}
+  window.YLLogin=function(ev){ev.preventDefault();var u=(document.getElementById("loginUser").value||"").trim().toLowerCase();var p=document.getElementById("loginPass").value||"";var err=document.getElementById("loginErr");
+    if(ACCOUNTS[u]&&ACCOUNTS[u]===p){setAuthed(u);return false;}err.textContent="账号或密码错误，请确认姓名全拼与密码（初始密码 123456）";return false;};
+  window.YLLogout=function(){sessionStorage.removeItem(KEY);sessionStorage.removeItem(UKEY);document.body.classList.remove("authed");refreshUser();var u=document.getElementById("loginUser"),p=document.getElementById("loginPass");if(u)u.value="";if(p)p.value="";};
+  if(sessionStorage.getItem(KEY)==="1"){document.body.classList.add("authed");}refreshUser();
+})();
+</script>
+
+<div class="kq-app">
+<header class="top">
+  <div><h1>🌿 园林分院内务管理平台</h1><div class="tip">考勤及补助 · 按《考勤管理办法（2026年修订）》实时核算</div></div>
+  <div><span id="usrChip" class="usr-chip" style="display:none"></span><button id="logoutBtn" class="btn sm" style="display:none;background:rgba(255,255,255,.18);color:#fff;border-color:transparent" onclick="YLLogout()">退出</button></div>
+</header>
+
+<div class="modbar">
+  <button onclick="location.href='index.html'">📋 周例会总结</button>
+  <button class="on">🕒 考勤及补助</button>
+</div>
+
+<div class="kq-main">
+  <!-- 工具栏 -->
+  <div class="toolbar">
+    <div><label>年度</label><select id="fYear"></select></div>
+    <div><label>月度</label><select id="fMonth"><option value="">全部月份</option></select></div>
+    <div><label>人员</label><select id="fEmp"><option value="">全部人员</option></select></div>
+    <div class="grow"><label>姓名检索（跨月查个人全部记录）</label><input type="text" id="fSearch" placeholder="输入姓名，如 汤铭"></div>
+    <div>
+      <button class="btn green" onclick="exportMonthly()">⬇️ 导出表二·月度收集表</button>
+      <button class="btn primary" onclick="openImport()">＋ 导入钉钉考勤数据</button>
+    </div>
+  </div>
+
+  <div id="overview" class="cards"></div>
+
+  <div class="panel">
+    <h2>表二 · 月度补助收集表 <span class="sub">（补助管理台 · 表二口径：本月补助=600+30×认定加班；扣罚自动；实发自动）</span></h2>
+    <div style="overflow:auto;max-height:460px">
+      <table id="mtable">
+        <thead><tr>
+          <th>序号</th><th class="name">姓名</th><th>部门</th><th>出勤天数</th><th>上班总时长</th>
+          <th>认定加班次数</th><th>迟到早退(次)</th><th>旷工(天)</th><th>上月连续旷工(是/否)</th>
+          <th>本月补助(自动)</th><th>扣罚(自动)</th><th>补助实发(自动)</th>
+        </tr></thead>
+        <tbody id="mtbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h2>💰 补贴排名 <span class="sub">实发补助（仅展示，不挂钩奖励）</span></h2>
+      <div id="rankSubsidy"></div>
+    </div>
+    <div class="panel">
+      <h2>📊 考勤表现排名 <span class="sub">出勤率 / 加班贡献</span></h2>
+      <div id="rankAttend"></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>表三 · 年度补助汇总表 <span class="sub">（补助管理台 · 表三口径：各月填补助实发，停发月填0，月均=已填月数均值）</span></h2>
+    <div style="overflow:auto;max-height:520px">
+      <table id="ytable">
+        <thead><tr>
+          <th>序号</th><th class="name">姓名</th><th>部门</th>
+          <th>1月</th><th>2月</th><th>3月</th><th>4月</th><th>5月</th><th>6月</th>
+          <th>7月</th><th>8月</th><th>9月</th><th>10月</th><th>11月</th><th>12月</th>
+          <th>年度合计</th><th>月均</th>
+        </tr></thead>
+        <tbody id="ytbody"></tbody>
+      </table>
+    </div>
+    <div style="margin-top:10px"><button class="btn green" onclick="exportAnnual()">⬇️ 导出表三·年度汇总表</button></div>
+  </div>
+
+  <div class="panel" id="personPanel" style="display:none">
+    <h2 id="personTitle">个人考勤及补贴明细</h2>
+    <div id="personBody"></div>
+  </div>
+
+  <div class="panel">
+    <h2>规则与口径说明</h2>
+    <div class="note">
+      <span class="pill">基础补助 600元/月（固定发放，不与出勤挂钩）</span>
+      <span class="pill">加班 30元/次</span><span class="pill">迟到早退 超3次起 50元/次</span><span class="pill">旷工 超1天起 100元/天</span>
+      <span class="pill">连续旷工≥3次 停发次月</span>
+      <div style="margin-top:8px">实发补助 = 基础补助 + 加班补助 − 迟到扣罚 − 旷工扣罚（最低 0 元）。数据按《景观园林设计院考勤管理办法（2026年修订）》实时计算；当前为示例数据，接入钉钉考勤导出后由后台替换 <code>attendance.json</code>。</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 导入弹窗 -->
+<div class="modal" id="importModal">
+  <div class="box">
+    <span class="closex" onclick="closeImport()">×</span>
+    <h3>导入钉钉考勤数据（生成 attendance.json）</h3>
+    <div class="mtip">将钉钉月度考勤导出整理为 CSV，按以下表头粘贴或选择文件（与《补助管理台》表二一致）：<br>
+      <code>month,name,dept,shouldWork,attendDays,workHours,overtimeCount,lateEarly,absentDays,continuousAbsent</code><br>
+      例：<code>2026-11,汤铭,总体组,21,21,176,6,3,0,0</code>　（month 形如 2026-11；name 须与在册姓名一致；continuousAbsent=本月连续旷工次数，≥3 则次月停发）</div>
+    <textarea id="importText" placeholder="month,name,dept,shouldWork,attendDays,workHours,overtimeCount,lateEarly,absentDays,continuousAbsent&#10;2026-11,汤铭,总体组,21,21,176,6,3,0,0"></textarea>
+    <div class="mtip"><input type="file" id="importFile" accept=".csv,.txt" onchange="loadImportFile()">　<span id="importMsg" class="kv"></span></div>
+    <div style="margin-top:10px;display:flex;gap:10px">
+      <button class="btn primary" onclick="previewImport()">解析并预览</button>
+      <button class="btn green" onclick="downloadImport()">⬇️ 下载合并后的 attendance.json</button>
+      <button class="btn" onclick="applyLocalImport()">本机预览（localStorage）</button>
+      <button class="btn" onclick="closeImport()">取消</button>
+    </div>
+    <div id="importPreview" class="mtip"></div>
+  </div>
+</div>
+
+<script>
+/* ===== 内置示例数据（离线兜底；公网以 attendance.json 为准） ===== */
+const FALLBACK = {"meta":{"title":"园林分院内务管理平台 · 考勤及补助","ruleVersion":"景观园林设计院考勤管理办法（2026年修订）","ruleEffective":"2026-12-01","updated":"2026-11-13","sample":true},"employees":[
+{"id":"001","name":"杨兰菊","dept":"总体组"},{"id":"002","name":"江发林","dept":"总体组"},{"id":"003","name":"李杰","dept":"总体组"},{"id":"004","name":"叶兆华","dept":"总体组"},{"id":"005","name":"陈丹丹","dept":"总体组"},{"id":"006","name":"吴赛霞","dept":"总体组"},
+{"id":"007","name":"陈伊凡","dept":"综合部"},{"id":"008","name":"吴玉洁","dept":"综合部"},
+{"id":"009","name":"方利娟","dept":"方案中心"},{"id":"010","name":"陈婉莹","dept":"方案中心"},{"id":"011","name":"余若若","dept":"方案中心"},{"id":"012","name":"吴少康","dept":"方案中心"},{"id":"013","name":"陈睿婷","dept":"方案中心"},{"id":"014","name":"张裕哲","dept":"方案中心"},
+{"id":"015","name":"张青琳","dept":"工程中心"},{"id":"016","name":"武佳佳","dept":"工程中心"},{"id":"017","name":"范青青","dept":"工程中心"},{"id":"018","name":"于海洋","dept":"工程中心"},{"id":"019","name":"贺皖湘","dept":"工程中心"},{"id":"020","name":"韩岳","dept":"工程中心"},{"id":"021","name":"韦家祥","dept":"工程中心"},{"id":"022","name":"聂元政","dept":"工程中心"},{"id":"023","name":"董璐瑶","dept":"工程中心"},{"id":"024","name":"费帆","dept":"工程中心"},{"id":"025","name":"吴云霞","dept":"工程中心"},{"id":"026","name":"朱先东","dept":"工程中心"},{"id":"027","name":"刘汉雄","dept":"工程中心"},{"id":"028","name":"孙进","dept":"工程中心"},{"id":"029","name":"张苏雯","dept":"工程中心"},{"id":"030","name":"徐立","dept":"工程中心"},{"id":"031","name":"马瑛滢","dept":"工程中心"},
+{"id":"032","name":"虞洋","dept":"环境中心"},{"id":"033","name":"陶欢","dept":"环境中心"},{"id":"034","name":"王永真","dept":"环境中心"},{"id":"035","name":"尚婧婧","dept":"环境中心"},
+{"id":"036","name":"李亮","dept":"生产人员"}],"records":[]};
+// 参数与规则（补助管理台.xlsx · 1-参数与规则）
+// 基础补助 600 固定发放，不与当月工作日数量挂钩；加班 30元/次；
+// 迟到早退 超3次 自第4次起 50元/次；旷工 超1天 自第2天起 100元/天；
+// 连续旷工≥3次 次月全部补助停发。实发=本月补助-扣罚（最低0）。
+const RULE={BASE:600,OT:30,LATE_T:3,LATE_P:50,ABS_T:1,ABS_P:100};
+let DATA=null, RECORDS=[], EMP={};
+
+function computeSubsidy(r, prev){
+  let base=RULE.BASE; // 固定600，不与出勤挂钩（参数与规则）
+  const otPay=(r.overtimeCount||0)*RULE.OT;
+  const latePen=Math.max(0,(r.lateEarly||0)-RULE.LATE_T)*RULE.LATE_P;
+  const absPen=Math.max(0,(r.absentDays||0)-RULE.ABS_T)*RULE.ABS_P;
+  let net=base+otPay-latePen-absPen;
+  let suspend=false,sr="";
+  if(prev&&(prev.continuousAbsent||0)>=3){suspend=true;sr="上月连续旷工≥3次，停发次月全部补助";net=0;}
+  net=Math.max(0,net);
+  const present=(r.attendDays||0);
+  const standard=(r.shouldWork||21);
+  const rate=standard>0?present/standard:0;
+  return {base,otPay,latePen,absPen,net,suspend,sr,present,rate};
+}
+
+function enrich(){
+  // 建立 月份+姓名 -> 记录 的前月映射用于停发次月
+  const byKey={};
+  RECORDS.forEach(r=>{byKey[r.month+"|"+r.name]=r;});
+  RECORDS.forEach(r=>{
+    const ym=r.month.split("-"); const y=+ym[0], m=+ym[1];
+    const pm=m===1?(""+(y-1)+"-12"):(""+y+"-"+String(m-1).padStart(2,"0"));
+    const prev=byKey[pm+"|"+r.name];
+    const s=computeSubsidy(r,prev);
+    const prevContinuousAbsent=(prev&&(prev.continuousAbsent||0)>=3)?"是":"否";
+    Object.assign(r,s,{prevContinuousAbsent});
+  });
+}
+
+function loadData(){
+  // 优先取 localStorage 预览，其次 attendance.json，再次内置兜底
+  const ls=localStorage.getItem("yl_attendance_ls");
+  if(ls){ try{ DATA=JSON.parse(ls); }catch(e){} }
+  if(!DATA){
+    fetch("./attendance.json?t="+Date.now()).then(x=>x.json()).then(j=>{DATA=j;boot();}).catch(()=>{DATA=FALLBACK;boot();});
+  } else { boot(); }
+}
+function boot(){
+  EMP={}; (DATA.employees||[]).forEach(e=>EMP[e.name]=e);
+  RECORDS=DATA.records||[];
+  enrich();
+  initFilters();
+  render();
+}
+
+function initFilters(){
+  const years=[...new Set(RECORDS.map(r=>r.month.slice(0,4)))].sort();
+  const months=[...new Set(RECORDS.map(r=>r.month.slice(5)))].sort();
+  const names=[...new Set(RECORDS.map(r=>r.name))].sort();
+  const ySel=document.getElementById("fYear"), mSel=document.getElementById("fMonth"), eSel=document.getElementById("fEmp");
+  ySel.innerHTML='<option value="">全部年度</option>'+years.map(y=>'<option value="'+y+'">'+y+' 年</option>').join("");
+  mSel.innerHTML='<option value="">全部月份</option>'+months.map(m=>'<option value="'+m+'">'+m+' 月</option>').join("");
+  eSel.innerHTML='<option value="">全部人员</option>'+names.map(n=>'<option value="'+n+'">'+n+'</option>').join("");
+  [ySel,mSel,eSel].forEach(s=>s.onchange=render);
+  document.getElementById("fSearch").oninput=render;
+}
+
+function getFiltered(){
+  const y=document.getElementById("fYear").value;
+  const m=document.getElementById("fMonth").value;
+  const e=document.getElementById("fEmp").value;
+  const q=document.getElementById("fSearch").value.trim();
+  return RECORDS.filter(r=>{
+    if(y&&r.month.slice(0,4)!==y) return false;
+    if(m&&r.month.slice(5)!==m) return false;
+    if(e&&r.name!==e) return false;
+    if(q&&!r.name.includes(q)) return false;
+    return true;
+  }).sort((a,b)=> a.month<b.month?-1:a.month>b.month?1 : a.name.localeCompare(b.name,"zh"));
+}
+
+function render(){
+  const rows=getFiltered();
+  renderOverview(rows);
+  renderTable(rows);
+  renderRankings(rows);
+  renderPerson();
+  renderAnnual();
+}
+
+function money(v){return "¥"+Number(v).toFixed(2);}
+function fmtPct(v){return (v*100).toFixed(1)+"%";}
+
+function renderOverview(rows){
+  const people=new Set(rows.map(r=>r.name)).size;
+  const totalNet=rows.reduce((s,r)=>s+r.net,0);
+  const totalOt=rows.reduce((s,r)=>s+r.otPay,0);
+  const totalPen=rows.reduce((s,r)=>s+r.latePen+r.absPen,0);
+  const avgRate=rows.length?rows.reduce((s,r)=>s+r.rate,0)/rows.length:0;
+  const cards=[
+    ["在册人数（筛选）",people,""],
+    ["实发补助合计",money(totalNet),"g"],
+    ["加班补助合计",money(totalOt),"b"],
+    ["扣罚合计",money(totalPen),"r"],
+    ["平均出勤率",fmtPct(avgRate),"b"],
+  ];
+  document.getElementById("overview").innerHTML=cards.map(c=>'<div class="stat"><div class="k">'+c[0]+'</div><div class="v '+(c[2]||"")+'">'+c[1]+'</div></div>').join("");
+}
+
+function renderTable(rows){
+  const tb=document.getElementById("mtbody");
+  if(!rows.length){tb.innerHTML='<tr><td colspan="12" class="empty">无匹配记录</td></tr>';return;}
+  tb.innerHTML=rows.map((r,i)=>{
+    return '<tr>'+
+      '<td>'+(i+1)+'</td>'+
+      '<td class="name">'+r.name+'</td>'+
+      '<td>'+((EMP[r.name]&&EMP[r.name].dept)||r.dept||"")+'</td>'+
+      '<td>'+r.attendDays+'</td>'+
+      '<td>'+r.workHours+'</td>'+
+      '<td>'+r.overtimeCount+'</td>'+
+      '<td>'+r.lateEarly+'</td>'+
+      '<td>'+r.absentDays+'</td>'+
+      '<td>'+(r.prevContinuousAbsent||"否")+'</td>'+
+      '<td>'+money(r.base)+'</td>'+
+      '<td>'+money(r.latePen+r.absPen)+'</td>'+
+      '<td>'+(r.suspend?'<span class="tag sus">停发</span> ':'' )+'<b>'+money(r.net)+'</b></td>'+
+    '</tr>';
+  }).join("");
+}
+
+function rankHtml(list,valKey,fmtFn,maxVal){
+  const mx=Math.max(1,...list.map(x=>x[valKey]));
+  return list.map((x,i)=>{
+    const top=i<3?'top':'';
+    const w=Math.max(2,(x[valKey]/mx)*100);
+    return '<div class="rank-row"><div class="rank-no '+top+'">'+(i+1)+'</div>'+
+      '<div style="width:70px">'+x.name+'</div>'+
+      '<div class="rank-bar"><i style="width:'+w+'%"></i></div>'+
+      '<div class="rank-val">'+fmtFn(x[valKey])+'</div></div>';
+  }).join("");
+}
+
+function renderRankings(rows){
+  // 补贴排名：同一人多月则取筛选内合计
+  const byName={};
+  rows.forEach(r=>{byName[r.name]=byName[r.name]||{name:r.name,net:0,rate:0,n:0,ot:0};byName[r.name].net+=r.net;byName[r.name].ot+=r.overtimeCount;byName[r.name].rate+=r.rate;byName[r.name].n++;});
+  const arr=Object.values(byName).map(x=>({name:x.name,net:x.net,rate:x.n?x.rate/x.n:0,ot:x.ot}));
+  const sub=[...arr].sort((a,b)=>b.net-a.net);
+  const att=[...arr].sort((a,b)=>b.rate-a.rate);
+  document.getElementById("rankSubsidy").innerHTML=rankHtml(sub,"net",money,Math.max(1,...sub.map(x=>x.net)))+
+    '<div class="note" style="margin-top:8px">合计口径：筛选范围内该人各月实发之和。'+ (sub.length?('最高 '+sub[0].name+' '+money(sub[0].net)):'') +'</div>';
+  document.getElementById("rankAttend").innerHTML=rankHtml(att,"rate",fmtPct,1)+
+    '<div class="note" style="margin-top:8px">出勤率=实际出勤/应出勤（均值）。'+ (att.length?('最高 '+att[0].name+' '+fmtPct(att[0].rate)+'，加班 '+att[0].ot+' 次'):'') +'</div>';
+}
+
+function renderPerson(){
+  const q=document.getElementById("fSearch").value.trim();
+  const panel=document.getElementById("personPanel");
+  if(!q){panel.style.display="none";return;}
+  const rows=RECORDS.filter(r=>r.name.includes(q)).sort((a,b)=>a.month<b.month?-1:1);
+  if(!rows.length){panel.style.display="none";return;}
+  panel.style.display="";
+  document.getElementById("personTitle").textContent="个人考勤及补贴明细 · "+q+"（"+rows.length+" 个月）";
+  document.getElementById("personBody").innerHTML=
+    '<div style="overflow:auto"><table><thead><tr><th class="name">月份</th><th>出勤天数</th><th>上班总时长</th><th>认定加班</th><th>迟到早退</th><th>旷工</th><th>上月连续旷工</th><th>本月补助</th><th>扣罚</th><th>实发补助</th><th class="name">备注</th></tr></thead><tbody>'+
+    rows.map(r=>'<tr><td class="name">'+r.month+'</td><td>'+r.attendDays+'</td><td>'+r.workHours+'</td><td>'+r.overtimeCount+'</td><td>'+r.lateEarly+'</td><td>'+r.absentDays+'</td><td>'+(r.prevContinuousAbsent||"否")+'</td><td>'+money(r.base)+'</td><td>'+money(r.latePen+r.absPen)+'</td><td><b>'+money(r.net)+'</b></td><td class="name">'+(r.suspend?('停发:'+r.sr):'')+'</td></tr>').join("")+
+    '</tbody></table></div>'+
+    '<div class="note" style="margin-top:8px">累计实发 <b>'+money(rows.reduce((s,r)=>s+r.net,0))+'</b>　累计加班 <b>'+rows.reduce((s,r)=>s+r.overtimeCount,0)+'</b> 次　累计迟到早退 <b>'+rows.reduce((s,r)=>s+r.lateEarly,0)+'</b> 次</div>';
+}
+
+/* ===== 导出表二·月度收集表（CSV，UTF-8 BOM 供 Excel） ===== */
+function exportMonthly(){
+  const rows=getFiltered();
+  if(!rows.length){alert("当前筛选无数据可导出");return;}
+  const head=["序号","姓名","部门","出勤天数","上班总时长","认定加班次数","迟到早退(次)","旷工(天)","上月连续旷工(是/否)","本月补助(自动)","扣罚(自动)","补助实发(自动)"];
+  const lines=[head.join(",")];
+  rows.forEach((r,i)=>{
+    lines.push([(i+1),r.name,(EMP[r.name]&&EMP[r.name].dept)||r.dept||"",r.attendDays,r.workHours,r.overtimeCount,r.lateEarly,r.absentDays,(r.prevContinuousAbsent||"否"),
+      r.base.toFixed(2),(r.latePen+r.absPen).toFixed(2),r.net.toFixed(2)].join(","));
+  });
+  const y=document.getElementById("fYear").value, m=document.getElementById("fMonth").value;
+  const fn="补助管理台_表二_月度收集表_"+(y||"全部年")+(m?("_"+m+"月"):"")+".csv";
+  const blob=new Blob(["\uFEFF"+lines.join("\r\n")],{type:"text/csv;charset=utf-8"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=fn;a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+
+/* ===== 表三·年度汇总表：渲染 + 导出 ===== */
+function yearOf(){return document.getElementById("fYear").value||[...new Set(RECORDS.map(r=>r.month.slice(0,4)))].sort().pop()||"";}
+function getYearPeople(y){
+  const names=[...new Set(RECORDS.filter(r=>!y||r.month.slice(0,4)===y).map(r=>r.name))].sort();
+  return names.map(n=>({name:n,dept:(EMP[n]&&EMP[n].dept)||""}));
+}
+const YMONTHS=[...Array(12)].map((_,i)=>String(i+1).padStart(2,"0"));
+function renderAnnual(){
+  const y=yearOf();
+  const people=getYearPeople(y);
+  const tb=document.getElementById("ytbody");
+  if(!people.length){tb.innerHTML='<tr><td colspan="17" class="empty">无数据</td></tr>';return;}
+  tb.innerHTML=people.map((p,i)=>{
+    let sum=0,cnt=0;
+    const cells=YMONTHS.map(mo=>{
+      const rec=RECORDS.find(r=>r.month===y+"-"+mo&&r.name===p.name);
+      if(rec){sum+=rec.net;cnt++;return money(rec.net);}
+      return "—";
+    });
+    const avg=cnt?sum/cnt:0;
+    return '<tr><td>'+(i+1)+'</td><td class="name">'+p.name+'</td><td>'+(p.dept||"")+'</td>'+
+      cells.map(c=>'<td>'+c+'</td>').join("")+
+      '<td><b>'+money(sum)+'</b></td><td>'+money(avg)+'</td></tr>';
+  }).join("");
+}
+function exportAnnual(){
+  const y=yearOf();
+  const people=getYearPeople(y);
+  if(!people.length){alert("当前无数据可导出");return;}
+  const head=["序号","姓名","部门"].concat(YMONTHS.map(m=>m+"月")).concat(["年度合计","月均"]);
+  const lines=[head.join(",")];
+  people.forEach((p,i)=>{
+    let sum=0,cnt=0;
+    const cells=YMONTHS.map(mo=>{
+      const rec=RECORDS.find(r=>r.month===y+"-"+mo&&r.name===p.name);
+      if(rec){sum+=rec.net;cnt++;return rec.net.toFixed(2);}
+      return "";
+    });
+    const avg=cnt?sum/cnt:0;
+    lines.push([(i+1),p.name,(p.dept||"")].concat(cells).concat([sum.toFixed(2),avg.toFixed(2)]).join(","));
+  });
+  const blob=new Blob(["\uFEFF"+lines.join("\r\n")],{type:"text/csv;charset=utf-8"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="补助管理台_表三_年度汇总表_"+y+".csv";a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+
+/* ===== 导入钉钉考勤数据 ===== */
+let IMPORT_PARSED=null;
+function openImport(){document.getElementById("importModal").classList.add("show");}
+function closeImport(){document.getElementById("importModal").classList.remove("show");}
+function loadImportFile(){
+  const f=document.getElementById("importFile").files[0];if(!f)return;
+  const rd=new FileReader();rd.onload=e=>{document.getElementById("importText").value=e.target.result;document.getElementById("importMsg").textContent="已读取文件";};
+  rd.readAsText(f,"utf-8");
+}
+function parseImport(){
+  const txt=document.getElementById("importText").value.trim();
+  if(!txt)return null;
+  const lines=txt.split(/\r?\n/).filter(l=>l.trim());
+  const head=lines[0].split(",").map(s=>s.trim());
+  const idx={};head.forEach((h,i)=>idx[h]=i);
+  const need=["month","name","dept","shouldWork","attendDays","workHours","overtimeCount","lateEarly","absentDays","continuousAbsent"];
+  if(!need.every(n=>n in idx)){alert("表头缺少必要字段，需包含："+need.join(","));return null;}
+  const recs=[];
+  for(let i=1;i<lines.length;i++){
+    const c=lines[i].split(",");
+    if(c.length<idx.continuousAbsent+1) continue;
+    recs.push({month:c[idx.month].trim(),name:c[idx.name].trim(),dept:c[idx.dept].trim(),
+      shouldWork:+c[idx.shouldWork]||0,attendDays:+c[idx.attendDays]||0,workHours:+c[idx.workHours]||0,
+      overtimeCount:+c[idx.overtimeCount]||0,lateEarly:+c[idx.lateEarly]||0,absentDays:+c[idx.absentDays]||0,
+      continuousAbsent:+c[idx.continuousAbsent]||0});
+  }
+  return recs;
+}
+function previewImport(){
+  const recs=parseImport();if(!recs)return;
+  // 合并到现有 DATA
+  const merged=mergeRecords(recs);
+  IMPORT_PARSED=merged;
+  const names=[...new Set(recs.map(r=>r.name))];
+  document.getElementById("importPreview").innerHTML="解析成功：<b>"+recs.length+"</b> 条记录，涉及 <b>"+names.length+"</b> 人（"+names.join("、")+"）。\n合并后全库共 <b>"+merged.records.length+"</b> 条。可下载 attendance.json 交管理员部署，或点“本机预览”立即查看。";
+}
+function mergeRecords(newRecs){
+  const base={meta:DATA.meta,employees:(DATA.employees||[]).slice(),records:(DATA.records||[]).slice()};
+  newRecs.forEach(nr=>{
+    const i=base.records.findIndex(r=>r.month===nr.month&&r.name===nr.name);
+    if(i>=0) base.records[i]=Object.assign(base.records[i],nr); else base.records.push(nr);
+    if(!base.employees.some(e=>e.name===nr.name)) base.employees.push({id:"U"+Date.now()+Math.floor(Math.random()*99),name:nr.name,dept:nr.dept||""});
+  });
+  return base;
+}
+function downloadImport(){
+  if(!IMPORT_PARSED){alert("请先解析预览");return;}
+  IMPORT_PARSED.meta=Object.assign({},IMPORT_PARSED.meta,{updated:new Date().toISOString().slice(0,10),sample:false});
+  const blob=new Blob([JSON.stringify(IMPORT_PARSED,null,2)],{type:"application/json"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="attendance.json";a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+  alert("已生成 attendance.json，请将其交给管理员部署到公网平台（覆盖 public/attendance.json 后重新发布）。");
+}
+function applyLocalImport(){
+  if(!IMPORT_PARSED){alert("请先解析预览");return;}
+  localStorage.setItem("yl_attendance_ls",JSON.stringify(IMPORT_PARSED));
+  DATA=IMPORT_PARSED;boot();closeImport();alert("已在本机（当前浏览器）预览导入数据。");
+}
+
+loadData();
+</script>
+</body>
+</html>

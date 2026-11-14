@@ -1,0 +1,1490 @@
+{
+  "meta": {
+    "title": "园林分院内务管理平台 · 考勤及补助",
+    "ruleVersion": "景观园林设计院考勤管理办法（2026年修订）",
+    "ruleEffective": "2026-12-01",
+    "ruleNotes": "基础补助600固定发放（不与出勤挂钩）；加班30元/次；迟到早退超3次起50元/次；旷工超1天起100元/天；连续旷工>=3次次月停发",
+    "updated": "2026-11-13",
+    "sample": true
+  },
+  "employees": [
+    {
+      "id": "001",
+      "name": "杨兰菊",
+      "dept": "总体组"
+    },
+    {
+      "id": "002",
+      "name": "江发林",
+      "dept": "总体组"
+    },
+    {
+      "id": "003",
+      "name": "李杰",
+      "dept": "总体组"
+    },
+    {
+      "id": "004",
+      "name": "叶兆华",
+      "dept": "总体组"
+    },
+    {
+      "id": "005",
+      "name": "陈丹丹",
+      "dept": "总体组"
+    },
+    {
+      "id": "006",
+      "name": "吴赛霞",
+      "dept": "总体组"
+    },
+    {
+      "id": "007",
+      "name": "陈伊凡",
+      "dept": "综合部"
+    },
+    {
+      "id": "008",
+      "name": "吴玉洁",
+      "dept": "综合部"
+    },
+    {
+      "id": "009",
+      "name": "方利娟",
+      "dept": "方案中心"
+    },
+    {
+      "id": "010",
+      "name": "陈婉莹",
+      "dept": "方案中心"
+    },
+    {
+      "id": "011",
+      "name": "余若若",
+      "dept": "方案中心"
+    },
+    {
+      "id": "012",
+      "name": "吴少康",
+      "dept": "方案中心"
+    },
+    {
+      "id": "013",
+      "name": "陈睿婷",
+      "dept": "方案中心"
+    },
+    {
+      "id": "014",
+      "name": "张裕哲",
+      "dept": "方案中心"
+    },
+    {
+      "id": "015",
+      "name": "张青琳",
+      "dept": "工程中心"
+    },
+    {
+      "id": "016",
+      "name": "武佳佳",
+      "dept": "工程中心"
+    },
+    {
+      "id": "017",
+      "name": "范青青",
+      "dept": "工程中心"
+    },
+    {
+      "id": "018",
+      "name": "于海洋",
+      "dept": "工程中心"
+    },
+    {
+      "id": "019",
+      "name": "贺皖湘",
+      "dept": "工程中心"
+    },
+    {
+      "id": "020",
+      "name": "韩岳",
+      "dept": "工程中心"
+    },
+    {
+      "id": "021",
+      "name": "韦家祥",
+      "dept": "工程中心"
+    },
+    {
+      "id": "022",
+      "name": "聂元政",
+      "dept": "工程中心"
+    },
+    {
+      "id": "023",
+      "name": "董璐瑶",
+      "dept": "工程中心"
+    },
+    {
+      "id": "024",
+      "name": "费帆",
+      "dept": "工程中心"
+    },
+    {
+      "id": "025",
+      "name": "吴云霞",
+      "dept": "工程中心"
+    },
+    {
+      "id": "026",
+      "name": "朱先东",
+      "dept": "工程中心"
+    },
+    {
+      "id": "027",
+      "name": "刘汉雄",
+      "dept": "工程中心"
+    },
+    {
+      "id": "028",
+      "name": "孙进",
+      "dept": "工程中心"
+    },
+    {
+      "id": "029",
+      "name": "张苏雯",
+      "dept": "工程中心"
+    },
+    {
+      "id": "030",
+      "name": "徐立",
+      "dept": "工程中心"
+    },
+    {
+      "id": "031",
+      "name": "马瑛滢",
+      "dept": "工程中心"
+    },
+    {
+      "id": "032",
+      "name": "虞洋",
+      "dept": "环境中心"
+    },
+    {
+      "id": "033",
+      "name": "陶欢",
+      "dept": "环境中心"
+    },
+    {
+      "id": "034",
+      "name": "王永真",
+      "dept": "环境中心"
+    },
+    {
+      "id": "035",
+      "name": "尚婧婧",
+      "dept": "环境中心"
+    },
+    {
+      "id": "036",
+      "name": "李亮",
+      "dept": "生产人员"
+    }
+  ],
+  "records": [
+    {
+      "month": "2026-09",
+      "name": "杨兰菊",
+      "dept": "总体组",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 180,
+      "overtimeCount": 5,
+      "lateEarly": 2,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "杨兰菊",
+      "dept": "总体组",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 170,
+      "overtimeCount": 4,
+      "lateEarly": 3,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "杨兰菊",
+      "dept": "总体组",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 185,
+      "overtimeCount": 7,
+      "lateEarly": 1,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "江发林",
+      "dept": "总体组",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 200,
+      "overtimeCount": 12,
+      "lateEarly": 2,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "江发林",
+      "dept": "总体组",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 190,
+      "overtimeCount": 9,
+      "lateEarly": 1,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "江发林",
+      "dept": "总体组",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 210,
+      "overtimeCount": 14,
+      "lateEarly": 3,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "李杰",
+      "dept": "总体组",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 185,
+      "overtimeCount": 8,
+      "lateEarly": 5,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "李杰",
+      "dept": "总体组",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 176,
+      "overtimeCount": 6,
+      "lateEarly": 4,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "李杰",
+      "dept": "总体组",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 190,
+      "overtimeCount": 10,
+      "lateEarly": 6,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "叶兆华",
+      "dept": "总体组",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "叶兆华",
+      "dept": "总体组",
+      "shouldWork": 18,
+      "attendDays": 15,
+      "workHours": 120,
+      "overtimeCount": 2,
+      "lateEarly": 2,
+      "absentDays": 3,
+      "continuousAbsent": 3
+    },
+    {
+      "month": "2026-11",
+      "name": "叶兆华",
+      "dept": "总体组",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 168,
+      "overtimeCount": 1,
+      "lateEarly": 1,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "陈丹丹",
+      "dept": "总体组",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "陈丹丹",
+      "dept": "总体组",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 168,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "陈丹丹",
+      "dept": "总体组",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "吴赛霞",
+      "dept": "总体组",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "吴赛霞",
+      "dept": "总体组",
+      "shouldWork": 21,
+      "attendDays": 18,
+      "workHours": 150,
+      "overtimeCount": 2,
+      "lateEarly": 1,
+      "absentDays": 3,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "吴赛霞",
+      "dept": "总体组",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "陈伊凡",
+      "dept": "综合部",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "陈伊凡",
+      "dept": "综合部",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 168,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "陈伊凡",
+      "dept": "综合部",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "吴玉洁",
+      "dept": "综合部",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "吴玉洁",
+      "dept": "综合部",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 168,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "吴玉洁",
+      "dept": "综合部",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "方利娟",
+      "dept": "方案中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "方利娟",
+      "dept": "方案中心",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 168,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "方利娟",
+      "dept": "方案中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "陈婉莹",
+      "dept": "方案中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "陈婉莹",
+      "dept": "方案中心",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 168,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "陈婉莹",
+      "dept": "方案中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "余若若",
+      "dept": "方案中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "余若若",
+      "dept": "方案中心",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 168,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "余若若",
+      "dept": "方案中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "吴少康",
+      "dept": "方案中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "吴少康",
+      "dept": "方案中心",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 168,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "吴少康",
+      "dept": "方案中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "陈睿婷",
+      "dept": "方案中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "陈睿婷",
+      "dept": "方案中心",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 168,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "陈睿婷",
+      "dept": "方案中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "张裕哲",
+      "dept": "方案中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "张裕哲",
+      "dept": "方案中心",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 168,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "张裕哲",
+      "dept": "方案中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "张青琳",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "张青琳",
+      "dept": "工程中心",
+      "shouldWork": 21,
+      "attendDays": 19,
+      "workHours": 152,
+      "overtimeCount": 3,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "张青琳",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "武佳佳",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "武佳佳",
+      "dept": "工程中心",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 168,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "武佳佳",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "范青青",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "范青青",
+      "dept": "工程中心",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 168,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "范青青",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "于海洋",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "于海洋",
+      "dept": "工程中心",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 168,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "于海洋",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "贺皖湘",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "贺皖湘",
+      "dept": "工程中心",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 168,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "贺皖湘",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "韩岳",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "韩岳",
+      "dept": "工程中心",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 168,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "韩岳",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "韦家祥",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "韦家祥",
+      "dept": "工程中心",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 168,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "韦家祥",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "聂元政",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "聂元政",
+      "dept": "工程中心",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 168,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "聂元政",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "董璐瑶",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "董璐瑶",
+      "dept": "工程中心",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 168,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "董璐瑶",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "费帆",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "费帆",
+      "dept": "工程中心",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 168,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "费帆",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "吴云霞",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "吴云霞",
+      "dept": "工程中心",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 168,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "吴云霞",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "朱先东",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "朱先东",
+      "dept": "工程中心",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 168,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "朱先东",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "刘汉雄",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "刘汉雄",
+      "dept": "工程中心",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 168,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "刘汉雄",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "孙进",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "孙进",
+      "dept": "工程中心",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 168,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "孙进",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "张苏雯",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "张苏雯",
+      "dept": "工程中心",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 168,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "张苏雯",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "徐立",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "徐立",
+      "dept": "工程中心",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 168,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "徐立",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "马瑛滢",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "马瑛滢",
+      "dept": "工程中心",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 168,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "马瑛滢",
+      "dept": "工程中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "虞洋",
+      "dept": "环境中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "虞洋",
+      "dept": "环境中心",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 168,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "虞洋",
+      "dept": "环境中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "陶欢",
+      "dept": "环境中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "陶欢",
+      "dept": "环境中心",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 168,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "陶欢",
+      "dept": "环境中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "王永真",
+      "dept": "环境中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "王永真",
+      "dept": "环境中心",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 168,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "王永真",
+      "dept": "环境中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "尚婧婧",
+      "dept": "环境中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "尚婧婧",
+      "dept": "环境中心",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 168,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "尚婧婧",
+      "dept": "环境中心",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-09",
+      "name": "李亮",
+      "dept": "生产人员",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-10",
+      "name": "李亮",
+      "dept": "生产人员",
+      "shouldWork": 21,
+      "attendDays": 21,
+      "workHours": 168,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    },
+    {
+      "month": "2026-11",
+      "name": "李亮",
+      "dept": "生产人员",
+      "shouldWork": 22,
+      "attendDays": 22,
+      "workHours": 176,
+      "overtimeCount": 0,
+      "lateEarly": 0,
+      "absentDays": 0,
+      "continuousAbsent": 0
+    }
+  ]
+}
