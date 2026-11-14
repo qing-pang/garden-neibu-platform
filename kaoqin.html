@@ -501,7 +501,7 @@ function downloadImport(){
   const blob=new Blob([JSON.stringify(IMPORT_PARSED,null,2)],{type:"application/json"});
   const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="attendance.json";a.click();
   setTimeout(()=>URL.revokeObjectURL(a.href),1000);
-  alert("已生成 attendance.json，请将其交给管理员部署到公网平台（覆盖 public/attendance.json 后重新发布）。");
+  alert("已生成 attendance.json。请将其覆盖仓库根目录下的 attendance.json，然后 git commit 并 push（或交给管理员处理），GitHub Pages 会在 1-2 分钟内自动更新生效。");
 }
 function applyLocalImport(){
   if(!IMPORT_PARSED){alert("请先解析预览");return;}
